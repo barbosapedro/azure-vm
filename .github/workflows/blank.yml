@@ -1,4 +1,4 @@
-# This is a basic workflow to help you get started with Actions
+ho# This is a basic workflow to help you get started with Actions
 
 name: atualizar o site na VM do azure
 
@@ -36,4 +36,7 @@ jobs:
           echo test, and deploy your project.
           sudo apt install apache2 -y
           ls -l
+          echo "${{ secrets.CHAVE }}" > chave.pem
+          chmod 600 chave.pem
+          ssh azureuser@http://4.251.131.103/ -i chave.pem "ls -l"
           
