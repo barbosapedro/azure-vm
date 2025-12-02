@@ -1,6 +1,5 @@
-ho# This is a basic workflow to help you get started with Actions
-
-name: atualizar o site na VM do azure
+# This is a basic workflow to help you get started with Actions
+name: atualizar VM
 
 # Controls when the workflow will run
 on:
@@ -38,5 +37,5 @@ jobs:
           ls -l
           echo "${{ secrets.CHAVE }}" > chave.pem
           chmod 600 chave.pem
-          ssh azureuser@http://4.251.131.103/ -i chave.pem "ls -l" -o StrictHostKeyChecking=no
-          
+          ssh -o StrictHostKeyChecking=no azureuser@http://4.251.131.103/ -i chave.pem "ls -l" 
+          scp -o StrictHostKeyChecking=no -i chave.pem ./index.html azureuser@4.251.131.103:/var/www/html/barbosa/index.html 
