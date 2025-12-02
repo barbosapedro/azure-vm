@@ -39,6 +39,6 @@ jobs:
           ls -l
           echo "${{ secrets.CHAVE }}" > chave.pem
           chmod 600 chave.pem
-          ssh -i chave.pem -o StrictHostKeyChecking=no azureuser@4.251.131.103 "sudo tar -cvf sitehtml.tar /var/www/html/barbosa/index.html"
-          scp -i -o chave.pem StrictHostKeyChecking=no azureuser@4.251.131.103:/home/sitehtml.tar sitehtml.tar
+          ssh -i chave.pem -o StrictHostKeyChecking=no azureuser@4.251.131.103 "sudo tar -cvf /home/site2html.tar /var/www/html/barbosa/index.html"
+          scp -i -o chave.pem StrictHostKeyChecking=no azureuser@4.251.131.103:/home/site2html.tar site2html.tar
           ls -l
